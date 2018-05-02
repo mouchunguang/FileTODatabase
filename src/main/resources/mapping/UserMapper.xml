@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pbccrc.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.pbccrc.po.UserPO">
+    <result column="User_ID" jdbcType="INTEGER" property="userId" />
+    <result column="User_Name" jdbcType="VARCHAR" property="userName" />
+    <result column="User_Sex" jdbcType="CHAR" property="userSex" />
+    <result column="User_Age" jdbcType="INTEGER" property="userAge" />
+    <result column="User_Position" jdbcType="VARCHAR" property="userPosition" />
+    <result column="User_Intro" jdbcType="VARCHAR" property="userIntro" />
+    <result column="User_Brithday" jdbcType="VARCHAR" property="userBrithday" />
+    <result column="User_Nationality" jdbcType="VARCHAR" property="userNationality" />
+    <result column="User_Household" jdbcType="VARCHAR" property="userHousehold" />
+    <result column="User_Height" jdbcType="DECIMAL" property="userHeight" />
+    <result column="User_Weight" jdbcType="DECIMAL" property="userWeight" />
+    <result column="User_Unit" jdbcType="VARCHAR" property="userUnit" />
+  </resultMap>
+  <select id="selectUserByID" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+    select * from t_user where 1=1 
+    <if test="userID != null">
+    	and user_ID=#{userID}
+    </if>
+  </select>
+  <delete id="deleteByID" parameterType="java.lang.Long">
+    delete from t_user where 1=1
+    <if test="userID != null">
+      and user_ID=#{userID}
+    </if>
+  </delete>
+</mapper>

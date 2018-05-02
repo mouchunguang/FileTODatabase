@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pbccrc.mapper.CarMapper">
+  <resultMap id="BaseResultMap" type="com.pbccrc.po.CarPO">
+    <result column="Car_ID" jdbcType="INTEGER" property="carId" />
+    <result column="User_ID" jdbcType="INTEGER" property="userId" />
+    <result column="Car_Name" jdbcType="VARCHAR" property="carName" />
+    <result column="Car_Brand" jdbcType="VARCHAR" property="carBrand" />
+    <result column="Car_Provider" jdbcType="VARCHAR" property="carProvider" />
+    <result column="Car_Engine" jdbcType="VARCHAR" property="carEngine" />
+    <result column="Car_GearBox" jdbcType="VARCHAR" property="carGearbox" />
+    <result column="Car_Structure" jdbcType="VARCHAR" property="carStructure" />
+    <result column="Car_QualityGuarantee" jdbcType="INTEGER" property="carQualityguarantee" />
+  </resultMap>
+  <select id="selectCarByID" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  	select * from t_car where 1=1
+  	<if test="carID != null">
+  		and car_id = #{carID}
+  	</if>
+  </select>
+  <delete id="deleteCarByID" parameterType="java.lang.Long">
+  	delete from t_car where 1=1
+    <if test="carID != null">
+      and car_ID = #{carID}
+    </if>
+  </delete>
+</mapper>

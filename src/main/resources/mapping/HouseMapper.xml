@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pbccrc.mapper.HouseMapper">
+  <resultMap id="BaseResultMap" type="com.pbccrc.po.HousePO">
+    <result column="House_ID" jdbcType="INTEGER" property="houseId" />
+    <result column="User_ID" jdbcType="INTEGER" property="userId" />
+    <result column="House_Name" jdbcType="VARCHAR" property="houseName" />
+    <result column="House_Addr" jdbcType="VARCHAR" property="houseAddr" />
+    <result column="House_Province" jdbcType="VARCHAR" property="houseProvince" />
+    <result column="House_City" jdbcType="VARCHAR" property="houseCity" />
+    <result column="House_County" jdbcType="VARCHAR" property="houseCounty" />
+    <result column="House_Postcode" jdbcType="VARCHAR" property="housePostcode" />
+  </resultMap>
+  <delete id="deleteHouseByID" parameterType="java.lang.Long" >
+  	delete from t_house where 1=1
+    <if test="houseID != null">
+      and house_ID=#{houseID}
+    </if>
+  </delete>
+  <select id="selectHouseByID" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+    select * from t_house where 1=1 
+    <if test="houseID != null">
+    	and house_ID=#{houseID}
+    </if>
+  </select>
+</mapper>
